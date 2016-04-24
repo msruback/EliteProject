@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/colorBackgroundPrimary">
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/galnet_logo"
+        android:id="@+id/icon"
+        android:layout_marginLeft="5dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Galactic News : Indi Bourbon Campaign Comes to an End"
+        android:layout_toRightOf="@id/icon"
+        android:layout_margin="10dp"
+        android:id="@+id/headline"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/horizontal_line"
+        android:layout_below="@+id/icon"
+        android:layout_alignParentStart="true"
+        android:id="@+id/line"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="21 APR 3302"
+        android:textSize="10dp"
+        android:textColor="@color/colorHighlightPrimary"
+        android:layout_alignStart="@+id/headline"
+        android:layout_below="@id/line"
+        android:id="@+id/date"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="The United Epsilon Indi Flag has announced that its campaign to decriminalise Indi Bourbon received the full support of the galactic community. Hundreds of pilots responded to the group's appeal for help, flooding Mansfield Orbiter with illegal rare liquors in protest against the Federal decision to restrict the sale of the popular bourbon.
+
+Yulia 'The Needle' Kuriakova, a spokesperson for the organisation, released a brief statement:
+
+'It is with great pleasure that we announce the reclassification of Indi Bourbon, thanks in no small part to the hundreds of Pilots Federation members who answered our call. Corporations need to learn that they cannot undermine long-held traditions just to line their own corrupt pockets. It is no small irony that those same officials accepted bribes to legitimise Indi Bourbon.'"
+        android:layout_below="@+id/date"
+        android:textSize="13dp"
+        android:paddingLeft="35dp"
+        android:paddingRight="35dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/body" />
+
+</RelativeLayout>

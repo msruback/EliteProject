@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<!-- Base application theme. -->
+<style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+    <!-- Customize your theme here. -->
+    <item name="colorPrimary">@color/colorBlack</item>
+    <item name="colorPrimaryDark">@color/colorPrimary</item>
+    <item name="android:windowBackground">@drawable/star_background</item>
+    <item name="android:textColor">@color/colorPrimary</item>
+    <item name="fontPath">fonts/century-gothic.ttf</item>
+</style>
+<style name="Header7Vert">
+    <item name="android:layout_margin">8dp</item>
+    <item name="android:paddingLeft">10dp</item>
+    <item name="android:paddingRight">10dp</item>
+    <item name="android:textSize">35dp</item>
+    <item name="fontPath">fonts/eurocaps.ttf</item>
+</style>
+<style name="CurrentPage7Vert" parent="Header7Vert">
+    <item name="android:textColor">@color/colorBlack</item>
+    <item name="fontPath">fonts/eurocaps.ttf</item>
+</style>
+
+</resources>

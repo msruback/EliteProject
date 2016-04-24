@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ff7100</color>
+    <color name="colorHighlightPrimary">#f39200</color>
+    <color name="colorBackgroundPrimary">#32c75800</color>
+    <color name="colorDarkPrimary">#af4e00</color>
+    <color name="colorEmpire">#00b3f7</color>
+    <color name="colorAlliance">#029e4c</color>
+    <color name="colorFederation">#f00</color>
+    <color name="colorHorizons">#0a8bd6</color>
+    <color name="colorIndependent">#ffb000</color>\
+    <color name="colorBlack">#000</color>
+    <color name="colorDate">#888</color>
+</resources>

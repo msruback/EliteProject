@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.matthew.eliteproject.Galnet">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBackgroundPrimary"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/headlines"
+        android:layout_alignParentTop="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/galnet"
+        android:text="GALNET"
+        style="@style/CurrentPage7Vert"
+        android:background="@color/colorHighlightPrimary"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/trading"
+        style="@style/Header7Vert"
+        android:layout_toRightOf="@id/galnet"
+        android:text="TRADING"
+        android:textColor="@color/colorDarkPrimary"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ships"
+        style="@style/Header7Vert"
+        android:layout_toRightOf="@id/trading"
+        android:text="SHIPS"
+        android:textColor="@color/colorDarkPrimary"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/options"
+        style="@style/Header7Vert"
+        android:layout_toRightOf="@+id/ships"
+        android:text="OPTIONS"
+        android:clickable="true"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:background="@drawable/header_line"
+        android:layout_below="@+id/galnet"
+        android:id="@+id/headerLine"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="|| 21 APR 3302 || Galactic News: Indi Bourbon Campaign Comes to an End | Galactic News: Alliance Initiative Successful | Community Goal: Expanding the Imperial Fleet | Community Goal: Upgrading Greeboski's Outpost | Galatic News: Weekly Democracy Report"
+        android:singleLine="true"
+        android:focusable="false"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:scrollHorizontally="true"
+        android:id="@+id/headlines"
+        android:padding="5dp"
+        android:layout_alignStart="@+id/articles"
+        android:layout_below="@id/headerLine"
+        android:background="@color/colorBackgroundPrimary"
+        fontPath="font/century-gothic.ttf"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@drawable/horizontal_line"
+        android:layout_below="@+id/headlines"
+        android:id="@+id/tickerLine"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/articles"
+        android:layout_below="@+id/tickerLine"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>
