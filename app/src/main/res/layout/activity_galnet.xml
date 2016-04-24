@@ -16,14 +16,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/galnet"
         android:text="GALNET"
-        style="@style/CurrentPage7Vert"
+        style="@style/CurrentPageVert"
         android:background="@color/colorHighlightPrimary"
         />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/trading"
-        style="@style/Header7Vert"
+        style="@style/HeaderVert"
         android:layout_toRightOf="@id/galnet"
         android:text="TRADING"
         android:textColor="@color/colorDarkPrimary"/>
@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ships"
-        style="@style/Header7Vert"
+        style="@style/HeaderVert"
         android:layout_toRightOf="@id/trading"
         android:text="SHIPS"
         android:textColor="@color/colorDarkPrimary"/>
@@ -39,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/options"
-        style="@style/Header7Vert"
+        style="@style/HeaderVert"
         android:layout_toRightOf="@+id/ships"
         android:text="OPTIONS"
         android:clickable="true"/>
@@ -76,6 +76,9 @@
         android:layout_height="match_parent"
         android:id="@+id/articles"
         android:layout_below="@+id/tickerLine"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:divider="#00000000"/>
 
 </RelativeLayout>

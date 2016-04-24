@@ -2,7 +2,7 @@
 <resources>
 
 <!-- Base application theme. -->
-<style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+<style name="AppThemeOrange" parent="Theme.AppCompat.NoActionBar">
     <!-- Customize your theme here. -->
     <item name="colorPrimary">@color/colorBlack</item>
     <item name="colorPrimaryDark">@color/colorPrimary</item>
@@ -10,16 +10,20 @@
     <item name="android:textColor">@color/colorPrimary</item>
     <item name="fontPath">fonts/century-gothic.ttf</item>
 </style>
-<style name="Header7Vert">
+<style name="HeaderVert">
     <item name="android:layout_margin">8dp</item>
     <item name="android:paddingLeft">10dp</item>
     <item name="android:paddingRight">10dp</item>
     <item name="android:textSize">35dp</item>
     <item name="fontPath">fonts/eurocaps.ttf</item>
 </style>
-<style name="CurrentPage7Vert" parent="Header7Vert">
+<style name="CurrentPageVert" parent="HeaderVert">
     <item name="android:textColor">@color/colorBlack</item>
     <item name="fontPath">fonts/eurocaps.ttf</item>
 </style>
+    <style name="ArticleOrange" parent="AppThemeOrange">
+        <item name="background">@color/colorBackground2Primary</item>
+
+    </style>
 
 </resources>
