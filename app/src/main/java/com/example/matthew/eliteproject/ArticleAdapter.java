@@ -23,15 +23,14 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_article, parent, false);
         }
-        // Lookup view for data population
+        //Grabbing Views
         TextView artHeadline = (TextView)convertView.findViewById(R.id.headline);
         TextView artDate = (TextView)convertView.findViewById(R.id.date);
         TextView artBody = (TextView)convertView.findViewById(R.id.body);
-        // Populate the data into the template view using the data object
+        //Getting the article data
         artHeadline.setText(article.getHeadline());
         artDate.setText(article.getDate());
         artBody.setText(article.getBody());
-        // Return the completed view to render on screen
         return convertView;
     }
 }
