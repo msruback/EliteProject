@@ -52,7 +52,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="|| 21 APR 3302 || Galactic News: Indi Bourbon Campaign Comes to an End | Galactic News: Alliance Initiative Successful | Community Goal: Expanding the Imperial Fleet | Community Goal: Upgrading Greeboski's Outpost | Galatic News: Weekly Democracy Report"
         android:singleLine="true"
         android:focusable="false"
         android:ellipsize="marquee"
@@ -62,8 +61,7 @@
         android:padding="5dp"
         android:layout_alignStart="@+id/articles"
         android:layout_below="@id/headerLine"
-        android:background="@color/colorBackgroundPrimary"
-        fontPath="font/century-gothic.ttf"/>
+        android:background="@color/colorBackgroundPrimary"/>
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="5dp"
@@ -71,16 +69,21 @@
         android:layout_below="@+id/headlines"
         android:id="@+id/tickerLine"/>
 
-    <ListView
+    <android.support.v4.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/articles"
         android:layout_below="@+id/tickerLine"
         android:layout_alignParentStart="true"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:divider="#00000000"
-        android:scrollbarThumbVertical="@drawable/verticle_line"
-        android:dividerHeight="20dp"/>
-
+        android:id="@+id/refresher">
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/articles"
+            android:layout_below="@+id/tickerLine"
+            android:divider="#00000000"
+            android:scrollbarThumbVertical="@drawable/verticle_line"
+            android:dividerHeight="20dp"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
 </RelativeLayout>

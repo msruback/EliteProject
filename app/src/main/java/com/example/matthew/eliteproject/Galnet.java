@@ -2,21 +2,22 @@ package com.example.matthew.eliteproject;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.format.Time;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextClock;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.safety.Whitelist;
 import org.jsoup.select.Elements;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class Galnet extends AppCompatActivity {
-
+    SwipeRefreshLayout refreshLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,12 +37,22 @@ public class Galnet extends AppCompatActivity {
         TextView shipsButton = (TextView) findViewById(R.id.ships);
         TextView optionsButton = (TextView) findViewById(R.id.options);
         ListView articlesListView = (ListView) findViewById(R.id.articles);
+        refreshLayout = (SwipeRefreshLayout) findViewById(R.id.refresher);
+        refreshLayout.setColorSchemeColors(ContextCompat.getColor(this,R.color.colorPrimary),0,0,0);
+        refreshLayout.setProgressBackgroundColorSchemeColor(ContextCompat.getColor(this,R.color.colorBackground2Primary));
         headlineMarquee.setSelected(true);
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
                 .setDefaultFontPath("fonts/century-gothic.ttf")
                 .setFontAttrId(R.attr.fontPath)
                 .build()
         );
+        refreshLayout.setOnRefreshListener((new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new GetArticles().execute();
+                refreshLayout.setRefreshing(false);
+            }
+        }));
         new GetArticles().execute();
 
     }
@@ -60,8 +71,7 @@ public class Galnet extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             articles = new ArrayList<Article>();
-            String ticker = "|| ";
-
+            ticker = "|| ";
             Calendar c = Calendar.getInstance();
             ticker += c.get(Calendar.DAY_OF_MONTH);
             switch(c.get(Calendar.MONTH)){

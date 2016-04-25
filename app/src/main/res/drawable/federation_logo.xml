@@ -1,0 +1,63 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="668dp"
+        android:height="537dp"
+        android:viewportWidth="668.303"
+        android:viewportHeight="537.143">
+    <path
+        android:pathData="M458.8,303.7m-21.3,0a21.3,21.3 0,1 1,42.6 0a21.3,21.3 0,1 1,-42.6 0"
+        android:fillColor="@color/colorFederation"/>
+    <path
+        android:pathData="M146,0l8.8,27.1l28.5,0l-23,17.6l8.8,27.5l-23,-16.5l-23,16.8l8.8,-27.9l-23,-17.6l28.5,0z"
+        android:fillColor="@color/colorFederation"/>
+    <path
+        android:pathData="M47.3,111.7l7.3,22.4l23.5,0l-19,13.5l7.3,22.2l-19,-13.9l-19,13.8l7.3,-22.1l-19,-13.5l23.5,0z"
+        android:fillColor="@color/colorFederation"/>
+    <path
+        android:pathData="M21.9,233.2l5.2,15.9l16.7,0l-13.5,9.3l5.2,15.6l-13.5,-10l-13.5,9.8l5.2,-15.4l-13.5,-9.3l16.7,0z"
+        android:fillColor="@color/colorFederation"/>
+    <path
+        android:pathData="M33.3,323.8l3.6,11.2l11.8,0l-9.5,6.6l3.6,11l-9.5,-7l-9.5,6.9l3.6,-10.9l-9.5,-6.6l11.8,0z"
+        android:fillColor="@color/colorFederation"/>
+    <path
+        android:pathData="M57.9,385l1.7,5.1l5.4,0l-4.3,2.8l1.7,4.9l-4.3,-3.2l-4.3,3.1l1.7,-4.8l-4.3,-2.8l5.4,0z"
+        android:fillColor="@color/colorFederation"/>
+    <path
+        android:pathData="M608.9,146l1.7,5.1l5.4,0l-4.3,2.8l1.7,4.9l-4.3,-3.2l-4.3,3.1l1.7,-4.8l-4.3,-2.8l5.4,0z"
+        android:fillColor="@color/colorFederation"/>
+    <path
+        android:pathData="M335.6,67.6c-85.6,0 -155,69.4 -155,155c0,85.6 69.4,155 155,155s155,-69.4 155,-155C490.6,137 421.2,67.6 335.6,67.6zM335.6,367.6C254.2,367.6 185.4,301.5 185.4,220.1c0,-81.5 68.8,-147.5 150.3,-147.5S486.1,138.6 486.1,220.1C486.1,301.5 417.1,367.6 335.6,367.6z"
+        android:fillColor="@color/colorFederation"/>
+    <path
+        android:pathData="M523.3,464l8.8,27.1l28.5,0l-23,17.9l8.8,27.7l-23,-16.4l-23,16.9l8.8,-28.2l-23,-17.9l28.5,0z"
+        android:fillColor="@color/colorFederation"/>
+    <path
+        android:pathData="M620,367.7l7.3,22.4l23.5,0l-19,13.9l7.3,22.4l-19,-13.8l-19,13.8l7.3,-22.4l-19,-13.9l23.5,0z"
+        android:fillColor="@color/colorFederation"/>
+    <path
+        android:pathData="M646.4,269.2l5.2,15.9l16.7,0l-13.5,9.3l5.2,15.7l-13.5,-10l-13.5,9.8l5.2,-15.4l-13.5,-9.4l16.7,0z"
+        android:fillColor="@color/colorFederation"/>
+    <path
+        android:pathData="M635,188.8l3.6,11.2l11.8,0l-9.5,6.9l3.6,11.2l-9.5,-6.9l-9.5,6.9l3.6,-11.2l-9.5,-6.9l11.8,0z"
+        android:fillColor="@color/colorFederation"/>
+    <path
+        android:pathData="M196,411m-29.6,0a29.6,29.6 0,1 1,59.3 0a29.6,29.6 0,1 1,-59.3 0"
+        android:fillColor="@color/colorFederation"/>
+    <path
+        android:pathData="M316.9,219.4l-70.6,-18.3l70.8,-17.8l18.5,-71.7l18.1,71.7l71.2,17.8l-70.5,18.2l-18.9,72.8z"
+        android:fillColor="@color/colorFederation"/>
+    <path
+        android:pathData="M335.4,39.6c-119.3,0 -220,96.8 -220,216.1s100.7,216.1 220,216.1s222,-96.8 222,-216.1S454.7,39.6 335.4,39.6zM335.4,455.7C221.7,455.7 122.4,363.6 122.4,249.9c0,-113.7 99.4,-205.8 213.1,-205.8C449.1,44.1 549.4,136.2 549.4,249.9C549.4,363.6 449.1,455.7 335.4,455.7z"
+        android:fillColor="@color/colorFederation"/>
+    <path
+        android:pathData="M334.2,27.6c-135.5,0 -245.9,109.9 -245.9,245.4S198.7,532.1 334.2,532.1c135.6,0 250.1,-123.5 250.1,-259.1S469.8,27.6 334.2,27.6zM334.3,514.6c-129.1,0 -238,-119 -238,-248.1c0,-129.1 108.9,-233.8 238,-233.8s241,104.7 241,233.8C575.3,395.6 463.4,514.6 334.3,514.6z"
+        android:fillColor="@color/colorFederation"/>
+    <path
+        android:pathData="M335.5,28.7m-8.4,0a8.4,8.4 0,1 1,16.8 0a8.4,8.4 0,1 1,-16.8 0"
+        android:fillColor="@color/colorFederation"/>
+    <path
+        android:pathData="M274.8,294.5c0,-3.2 -2.6,-5.8 -5.8,-5.8s-5.8,2.6 -5.8,5.8s2.6,5.8 5.8,5.8C273.4,300.2 274.8,296.4 274.8,294.5z"
+        android:fillColor="@color/colorFederation"/>
+    <path
+        android:pathData="M336.1,94.6c-62.3,0 -112.7,50.5 -112.7,112.7c0,62.3 50.5,112.7 112.7,112.7s112.7,-50.5 112.7,-112.7C448.8,145.1 398.3,94.6 336.1,94.6zM336.1,313.1c-59.3,0 -109.4,-48.1 -109.4,-107.5S276.7,98.1 336.1,98.1s109,48.1 109,107.5S395.4,313.1 336.1,313.1z"
+        android:fillColor="@color/colorFederation"/>
+</vector>

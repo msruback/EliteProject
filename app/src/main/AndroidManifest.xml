@@ -4,8 +4,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label=""
+        android:icon="@drawable/galnet_logo"
+        android:label="Galnet"
         android:supportsRtl="true"
         android:theme="@style/AppThemeOrange">
         <activity android:name=".Galnet">

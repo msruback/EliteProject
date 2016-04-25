@@ -44,6 +44,7 @@
         android:paddingLeft="35dp"
         android:paddingRight="35dp"
         android:id="@+id/body"
-        android:textColor="#FFF"/>
+        android:textColor="#FFF"
+        android:paddingBottom="10dp"/>
 
 </RelativeLayout>

@@ -8,7 +8,7 @@
     <item name="colorPrimaryDark">@color/colorPrimary</item>
     <item name="android:windowBackground">@drawable/star_background</item>
     <item name="android:textColor">@color/colorPrimary</item>
-    <item name="fontPath">fonts/century-gothic.ttf</item>
+    <item name="fontPath">fonts/century-gothic.TTF</item>
 </style>
 <style name="HeaderVert">
     <item name="android:layout_margin">8dp</item>
