@@ -2,6 +2,7 @@ package com.example.matthew.eliteproject;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
@@ -9,9 +10,11 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -44,6 +47,7 @@ public class Galnet extends AppCompatActivity {
         ImageView headerBackground = (ImageView) findViewById(R.id.headerBackground);
         ListView articlesListView = (ListView) findViewById(R.id.articles);
         refreshLayout = (SwipeRefreshLayout) findViewById(R.id.refresher);
+
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
         if(!settings.contains("styles")){
             SharedPreferences.Editor edit = settings.edit();
@@ -67,7 +71,7 @@ public class Galnet extends AppCompatActivity {
 
                 //refresh styling
                 refreshLayout.setColorSchemeColors(ContextCompat.getColor(this,R.color.colorPrimary),0,0,0);
-                refreshLayout.setProgressBackgroundColorSchemeColor(ContextCompat.getColor(this,R.color.colorPrimaryBackground2));
+                refreshLayout.setProgressBackgroundColorSchemeColor(ContextCompat.getColor(this,R.color.colorPrimaryBackground));
 
                 break;
             case "empire":
@@ -86,7 +90,64 @@ public class Galnet extends AppCompatActivity {
 
                 //refresh styling
                 refreshLayout.setColorSchemeColors(ContextCompat.getColor(this,R.color.colorEmpire),0,0,0);
-                refreshLayout.setProgressBackgroundColorSchemeColor(ContextCompat.getColor(this,R.color.colorEmpireBackground2));
+                refreshLayout.setProgressBackgroundColorSchemeColor(ContextCompat.getColor(this,R.color.colorEmpireBackground));
+
+                break;
+            case "alliance":
+                //header styling
+                galnetButton.setBackgroundColor(ContextCompat.getColor(this,R.color.colorAllianceHighlight));
+                tradingButton.setTextColor(ContextCompat.getColor(this,R.color.colorAllianceDark));
+                shipsButton.setTextColor(ContextCompat.getColor(this,R.color.colorAllianceDark));
+                optionsButton.setTextColor(ContextCompat.getColor(this,R.color.colorAlliance));
+                headerLine.setColorFilter(ContextCompat.getColor(this,R.color.colorAlliance));
+                headerBackground.setBackgroundColor(ContextCompat.getColor(this,R.color.colorAllianceBackground));
+
+                //ticker styling
+                headlineMarquee.setTextColor(ContextCompat.getColor(this,R.color.colorAlliance));
+                headlineMarquee.setBackgroundColor(ContextCompat.getColor(this,R.color.colorAllianceBackground));
+                tickerLine.setColorFilter(ContextCompat.getColor(this,R.color.colorAlliance));
+
+                //refresh styling
+                refreshLayout.setColorSchemeColors(ContextCompat.getColor(this,R.color.colorAlliance),0,0,0);
+                refreshLayout.setProgressBackgroundColorSchemeColor(ContextCompat.getColor(this,R.color.colorAllianceBackground));
+
+                break;
+            case "federation":
+                //header styling
+                galnetButton.setBackgroundColor(ContextCompat.getColor(this,R.color.colorFederationHighlight));
+                tradingButton.setTextColor(ContextCompat.getColor(this,R.color.colorFederationDark));
+                shipsButton.setTextColor(ContextCompat.getColor(this,R.color.colorFederationDark));
+                optionsButton.setTextColor(ContextCompat.getColor(this,R.color.colorFederation));
+                headerLine.setColorFilter(ContextCompat.getColor(this,R.color.colorFederation));
+                headerBackground.setBackgroundColor(ContextCompat.getColor(this,R.color.colorFederationBackground));
+
+                //ticker styling
+                headlineMarquee.setTextColor(ContextCompat.getColor(this,R.color.colorFederation));
+                headlineMarquee.setBackgroundColor(ContextCompat.getColor(this,R.color.colorFederationBackground));
+                tickerLine.setColorFilter(ContextCompat.getColor(this,R.color.colorFederation));
+
+                //refresh styling
+                refreshLayout.setColorSchemeColors(ContextCompat.getColor(this,R.color.colorFederation),0,0,0);
+                refreshLayout.setProgressBackgroundColorSchemeColor(ContextCompat.getColor(this,R.color.colorFederationBackground));
+
+                break;
+            case "independent":
+                //header styling
+                galnetButton.setBackgroundColor(ContextCompat.getColor(this,R.color.colorIndependentHighlight));
+                tradingButton.setTextColor(ContextCompat.getColor(this,R.color.colorIndependentDark));
+                shipsButton.setTextColor(ContextCompat.getColor(this,R.color.colorIndependentDark));
+                optionsButton.setTextColor(ContextCompat.getColor(this,R.color.colorIndependent));
+                headerLine.setColorFilter(ContextCompat.getColor(this,R.color.colorIndependent));
+                headerBackground.setBackgroundColor(ContextCompat.getColor(this,R.color.colorIndependentBackground));
+
+                //ticker styling
+                headlineMarquee.setTextColor(ContextCompat.getColor(this,R.color.colorIndependent));
+                headlineMarquee.setBackgroundColor(ContextCompat.getColor(this,R.color.colorIndependentBackground));
+                tickerLine.setColorFilter(ContextCompat.getColor(this,R.color.colorIndependent));
+
+                //refresh styling
+                refreshLayout.setColorSchemeColors(ContextCompat.getColor(this,R.color.colorIndependent),0,0,0);
+                refreshLayout.setProgressBackgroundColorSchemeColor(ContextCompat.getColor(this,R.color.colorIndependentBackground));
 
                 break;
         }
@@ -101,7 +162,6 @@ public class Galnet extends AppCompatActivity {
             @Override
             public void onRefresh() {
                 new GetArticles().execute();
-                refreshLayout.setRefreshing(false);
             }
         }));
         if(!settings.contains("lastUpdated")){
@@ -114,6 +174,13 @@ public class Galnet extends AppCompatActivity {
         if(settings.getInt("lastUpdated",date)!=date) {
             new GetArticles().execute();
         }
+        optionsButton.setOnClickListener(new TextView.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), Options.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -174,11 +241,6 @@ public class Galnet extends AppCompatActivity {
             }
             ticker+=(c.get(Calendar.YEAR)+1286);
             ticker+=" || ";
-            mProgressDialog = new ProgressDialog(Galnet.this);
-            mProgressDialog.setTitle("Getting News");
-            mProgressDialog.setMessage("Loading...");
-            mProgressDialog.setIndeterminate(false);
-            mProgressDialog.show();
         }
 
         @Override
@@ -213,12 +275,13 @@ public class Galnet extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Void result) {
+            refreshLayout.setRefreshing(false);
             TextView tickerView = (TextView) findViewById(R.id.headlines);
             ListView articlesListView = (ListView) findViewById(R.id.articles);
             tickerView.setText(ticker);
             ArticleAdapter adapter = new ArticleAdapter(getApplicationContext(), articles);
             articlesListView.setAdapter(adapter);
-            mProgressDialog.dismiss();
+            Toast.makeText(getApplicationContext(), "Got Latest News", Toast.LENGTH_SHORT).show();
         }
     }
 }

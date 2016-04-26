@@ -1,15 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--Default Colors-->
     <color name="colorPrimary">#ff7100</color>
-    <color name="colorHighlightPrimary">#f39200</color>
-    <color name="colorBackgroundPrimary">#32c75800</color>
-    <color name="colorBackground2Primary">#0fc75800</color>
-    <color name="colorDarkPrimary">#af4e00</color>
+    <color name="colorPrimaryHighlight">#f39200</color>
+    <color name="colorPrimaryBackground">#32c75800</color>
+    <color name="colorPrimaryBackground2">#0fc75800</color>
+    <color name="colorPrimaryDark">#af4e00</color>
+    <!--Empire Colors-->
     <color name="colorEmpire">#00b3f7</color>
+    <color name="colorEmpireHighlight">#00daf7</color>
+    <color name="colorEmpireBackground">#3200678f</color>
+    <color name="colorEmpireBackground2">#0f00678f</color>
+    <color name="colorEmpireDark">#00678f</color>
+    <!--Alliance Colors-->
     <color name="colorAlliance">#029e4c</color>
+    <color name="colorAllianceHighlight">#029e4c</color>
+    <color name="colorAllianceBackground">#029e4c</color>
+    <color name="colorAllianceBackground2">#029e4c</color>
+    <color name="colorAllianceDark">#029e4c</color>
+    <!--Federation Colors-->
     <color name="colorFederation">#f00</color>
-    <color name="colorHorizons">#0a8bd6</color>
-    <color name="colorIndependent">#ffb000</color>\
+    <color name="colorFederationHighlight">#f00</color>
+    <color name="colorFederationBackground">#f00</color>
+    <color name="colorFederationBackground2">#f00</color>
+    <color name="colorFederationDark">#f00</color>
+    <!--Independent Colors-->
+    <color name="colorIndependent">#ffb000</color>
+    <color name="colorIndependentHighlight">#ffb000</color>
+    <color name="colorIndependentBackground">#ffb000</color>
+    <color name="colorIndependentBackground2">#ffb000</color>
+    <color name="colorIndependentDark">#ffb000</color>
+
     <color name="colorBlack">#000</color>
     <color name="colorDate">#888</color>
 </resources>

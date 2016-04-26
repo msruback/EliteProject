@@ -4,28 +4,26 @@
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/colorBackground2Primary"
-    android:layout_margin="10dp">
+    android:layout_margin="10dp"
+    android:id="@+id/article">
 
     <ImageView
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:src="@drawable/galnet_logo"
-        android:id="@+id/icon"
+        android:id="@+id/logo"
         android:layout_marginLeft="5dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/icon"
+        android:layout_toRightOf="@id/logo"
         android:layout_margin="10dp"
-        android:id="@+id/headline"
-        android:textColor="@color/colorPrimary"/>
+        android:id="@+id/headline"/>
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/horizontal_line"
-        android:layout_below="@+id/icon"
+        android:layout_below="@+id/logo"
         android:layout_alignParentStart="true"
         android:id="@+id/line"/>
     <TextView

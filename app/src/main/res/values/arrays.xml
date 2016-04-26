@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="styles">
+        <item>galnet</item>
+        <item>empire</item>
+        <item>alliance</item>
+        <item>federation</item>
+        <item>independent</item>
+    </string-array>
+</resources>
