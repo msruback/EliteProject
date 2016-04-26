@@ -2,14 +2,14 @@ package com.example.matthew.eliteproject;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -32,14 +32,65 @@ public class Galnet extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_galnet);
+        Calendar c = Calendar.getInstance();
+        int date = c.get(Calendar.DAY_OF_YEAR);
         TextView headlineMarquee = (TextView) findViewById(R.id.headlines);
+        ImageView tickerLine = (ImageView) findViewById(R.id.tickerLine);
+        TextView galnetButton = (TextView) findViewById(R.id.galnet);
         TextView tradingButton = (TextView) findViewById(R.id.trading);
         TextView shipsButton = (TextView) findViewById(R.id.ships);
         TextView optionsButton = (TextView) findViewById(R.id.options);
+        ImageView headerLine = (ImageView) findViewById(R.id.headerLine);
+        ImageView headerBackground = (ImageView) findViewById(R.id.headerBackground);
         ListView articlesListView = (ListView) findViewById(R.id.articles);
         refreshLayout = (SwipeRefreshLayout) findViewById(R.id.refresher);
-        refreshLayout.setColorSchemeColors(ContextCompat.getColor(this,R.color.colorPrimary),0,0,0);
-        refreshLayout.setProgressBackgroundColorSchemeColor(ContextCompat.getColor(this,R.color.colorBackground2Primary));
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+        if(!settings.contains("styles")){
+            SharedPreferences.Editor edit = settings.edit();
+            edit.putString("styles","galnet");
+            edit.commit();
+        }
+        switch(settings.getString("styles","fail")){
+            case "galnet":
+                //header styling
+                galnetButton.setBackgroundColor(ContextCompat.getColor(this,R.color.colorPrimaryHighlight));
+                tradingButton.setTextColor(ContextCompat.getColor(this,R.color.colorPrimaryDark));
+                shipsButton.setTextColor(ContextCompat.getColor(this,R.color.colorPrimaryDark));
+                optionsButton.setTextColor(ContextCompat.getColor(this,R.color.colorPrimary));
+                headerLine.setColorFilter(ContextCompat.getColor(this,R.color.colorPrimary));
+                headerBackground.setBackgroundColor(ContextCompat.getColor(this,R.color.colorPrimaryBackground));
+
+                //ticker styling
+                headlineMarquee.setTextColor(ContextCompat.getColor(this,R.color.colorPrimary));
+                headlineMarquee.setBackgroundColor(ContextCompat.getColor(this,R.color.colorPrimaryBackground));
+                tickerLine.setColorFilter(ContextCompat.getColor(this,R.color.colorPrimary));
+
+                //refresh styling
+                refreshLayout.setColorSchemeColors(ContextCompat.getColor(this,R.color.colorPrimary),0,0,0);
+                refreshLayout.setProgressBackgroundColorSchemeColor(ContextCompat.getColor(this,R.color.colorPrimaryBackground2));
+
+                break;
+            case "empire":
+                //header styling
+                galnetButton.setBackgroundColor(ContextCompat.getColor(this,R.color.colorEmpireHighlight));
+                tradingButton.setTextColor(ContextCompat.getColor(this,R.color.colorEmpireDark));
+                shipsButton.setTextColor(ContextCompat.getColor(this,R.color.colorEmpireDark));
+                optionsButton.setTextColor(ContextCompat.getColor(this,R.color.colorEmpire));
+                headerLine.setColorFilter(ContextCompat.getColor(this,R.color.colorEmpire));
+                headerBackground.setBackgroundColor(ContextCompat.getColor(this,R.color.colorEmpireBackground));
+
+                //ticker styling
+                headlineMarquee.setTextColor(ContextCompat.getColor(this,R.color.colorEmpire));
+                headlineMarquee.setBackgroundColor(ContextCompat.getColor(this,R.color.colorEmpireBackground));
+                tickerLine.setColorFilter(ContextCompat.getColor(this,R.color.colorEmpire));
+
+                //refresh styling
+                refreshLayout.setColorSchemeColors(ContextCompat.getColor(this,R.color.colorEmpire),0,0,0);
+                refreshLayout.setProgressBackgroundColorSchemeColor(ContextCompat.getColor(this,R.color.colorEmpireBackground2));
+
+                break;
+        }
+
         headlineMarquee.setSelected(true);
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
                 .setDefaultFontPath("fonts/century-gothic.ttf")
@@ -53,7 +104,16 @@ public class Galnet extends AppCompatActivity {
                 refreshLayout.setRefreshing(false);
             }
         }));
-        new GetArticles().execute();
+        if(!settings.contains("lastUpdated")){
+            SharedPreferences.Editor edit = settings.edit();
+            edit.putInt("lastUpdated",date);
+            edit.commit();
+            new GetArticles().execute();
+        }
+
+        if(settings.getInt("lastUpdated",date)!=date) {
+            new GetArticles().execute();
+        }
 
     }
 
