@@ -16,13 +16,22 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.safety.Whitelist;
 import org.jsoup.select.Elements;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -33,6 +42,29 @@ public class Galnet extends AppCompatActivity {
     SwipeRefreshLayout refreshLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+        if(!settings.contains("styles")){
+            SharedPreferences.Editor edit = settings.edit();
+            edit.putString("styles","galnet");
+            edit.commit();
+        }
+        switch(settings.getString("styles","fail")){
+            case "galnet":
+                setTheme(R.style.AppThemePrimary);
+                break;
+            case "empire":
+                setTheme(R.style.AppThemeEmpire);
+                break;
+            case "alliance":
+                setTheme(R.style.AppThemeAlliance);
+                break;
+            case "federation":
+                setTheme(R.style.AppThemeFederation);
+                break;
+            case "independent":
+                setTheme(R.style.AppThemeIndependent);
+                break;
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_galnet);
         Calendar c = Calendar.getInstance();
@@ -48,12 +80,6 @@ public class Galnet extends AppCompatActivity {
         ListView articlesListView = (ListView) findViewById(R.id.articles);
         refreshLayout = (SwipeRefreshLayout) findViewById(R.id.refresher);
 
-        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
-        if(!settings.contains("styles")){
-            SharedPreferences.Editor edit = settings.edit();
-            edit.putString("styles","galnet");
-            edit.commit();
-        }
         switch(settings.getString("styles","fail")){
             case "galnet":
                 //header styling
@@ -172,7 +198,45 @@ public class Galnet extends AppCompatActivity {
         }
 
         if(settings.getInt("lastUpdated",date)!=date) {
+            SharedPreferences.Editor edit = settings.edit();
+            edit.putInt("lastUpdated",date);
+            edit.commit();
             new GetArticles().execute();
+        }else{
+            String json="",temp="";
+            try{
+                FileInputStream fis = openFileInput("articles");
+                InputStreamReader in = new InputStreamReader(fis);
+                BufferedReader br = new BufferedReader(in);
+                while((temp=br.readLine())!=null){
+                    json+=temp;
+                }
+                br.close();
+                JSONObject currentArticle;
+                JSONObject fullJSON=new JSONObject(json);
+                JSONArray articleJSON = fullJSON.getJSONArray("articles");
+                ArrayList<Article> articles = new ArrayList<Article>();
+                String artHeadline,artDate,artBody;
+                for(int i = 0; i<15;i++){
+                    currentArticle= (JSONObject) articleJSON.get(i);
+                    artHeadline = currentArticle.getString("headline");
+                    artHeadline = artHeadline.replaceAll("\\'","'");
+                    artDate = currentArticle.getString("date");
+                    artBody = currentArticle.getString("body");
+                    artBody = artBody.replaceAll("\\'","'");
+                    articles.add(new Article(artHeadline,artDate,artBody));
+
+                }
+                headlineMarquee.setText(fullJSON.getString("ticker"));
+                ArticleAdapter adapter = new ArticleAdapter(getApplicationContext(), articles);
+                articlesListView.setAdapter(adapter);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
         }
         optionsButton.setOnClickListener(new TextView.OnClickListener(){
             @Override
@@ -249,9 +313,13 @@ public class Galnet extends AppCompatActivity {
                 Document galnetDoc = Jsoup.connect("https://community.elitedangerous.com/galnet").get();
                 Elements articlesElement = galnetDoc.getElementsByClass("article");
                 Element article;
-                String headline, date, bodyHTML,body;
+                String headline, date, bodyHTML,body,articlesJSON;
+                OutputStreamWriter fos = new OutputStreamWriter(openFileOutput("articles",Context.MODE_PRIVATE));
+                BufferedWriter bwriter = new BufferedWriter(fos);
+                bwriter.write("{\"articles\":[");
 
                 for (int i = 0; i < 15; i++) {
+
                     article = articlesElement.get(i);
                     headline = article.getElementsByTag("a").get(0).ownText();
                     ticker+=headline;
@@ -266,7 +334,24 @@ public class Galnet extends AppCompatActivity {
                     String s = bodyDocument.html().replaceAll("\\\\n", "\n");
                     body=Jsoup.clean(s, "", Whitelist.none(), new Document.OutputSettings().prettyPrint(false));
                     articles.add(new Article(headline, date, body));
+                    bwriter.write("{\"headline\":\"");
+                    bwriter.write(headline.replaceAll("\"","\\\\\""));
+                    bwriter.write("\",\"date\":\"");
+                    bwriter.write(date);
+                    bwriter.write("\",\"body\":\"");
+                    bwriter.write(body.replaceAll("\\n","\\"+"\\n").replaceAll("\"","\\\\\""));
+                    bwriter.write("\"}");
+                    if(i!=14){
+                        bwriter.write(",");
+                    }
+                    bwriter.newLine();
                 }
+                bwriter.newLine();
+                bwriter.write("],\"ticker\":\"");
+                bwriter.write(ticker.replaceAll("\"","\\\\\""));
+                bwriter.write("\"}");
+                bwriter.flush();
+                bwriter.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }

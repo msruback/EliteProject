@@ -14,22 +14,22 @@
     <color name="colorEmpireDark">#00678f</color>
     <!--Alliance Colors-->
     <color name="colorAlliance">#029e4c</color>
-    <color name="colorAllianceHighlight">#029e4c</color>
-    <color name="colorAllianceBackground">#029e4c</color>
-    <color name="colorAllianceBackground2">#029e4c</color>
-    <color name="colorAllianceDark">#029e4c</color>
+    <color name="colorAllianceHighlight">#00e26b</color>
+    <color name="colorAllianceBackground">#32027c3c</color>
+    <color name="colorAllianceBackground2">#0f027c3c</color>
+    <color name="colorAllianceDark">#026832</color>
     <!--Federation Colors-->
     <color name="colorFederation">#f00</color>
-    <color name="colorFederationHighlight">#f00</color>
-    <color name="colorFederationBackground">#f00</color>
-    <color name="colorFederationBackground2">#f00</color>
-    <color name="colorFederationDark">#f00</color>
+    <color name="colorFederationHighlight">#ff2a2a</color>
+    <color name="colorFederationBackground">#32aa0000</color>
+    <color name="colorFederationBackground2">#0faa0000</color>
+    <color name="colorFederationDark">#a70000</color>
     <!--Independent Colors-->
     <color name="colorIndependent">#ffb000</color>
-    <color name="colorIndependentHighlight">#ffb000</color>
-    <color name="colorIndependentBackground">#ffb000</color>
-    <color name="colorIndependentBackground2">#ffb000</color>
-    <color name="colorIndependentDark">#ffb000</color>
+    <color name="colorIndependentHighlight">#ffd500</color>
+    <color name="colorIndependentBackground">#32b27b00</color>
+    <color name="colorIndependentBackground2">#0fb27b00</color>
+    <color name="colorIndependentDark">#d49200</color>
 
     <color name="colorBlack">#000</color>
     <color name="colorDate">#888</color>

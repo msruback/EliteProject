@@ -3,20 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.matthew.eliteproject.Galnet">
+    tools:context="com.example.matthew.eliteproject.Options">
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/headlines"
         android:layout_alignParentTop="true"
-        android:id="@+id/headerBackground"/>
+        android:id="@+id/headerBackground"
+        android:layout_above="@+id/headerLine"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/galnet"
         android:text="GALNET"
-        style="@style/CurrentPage"
+        style="@style/Header"
         />
     <TextView
         android:layout_width="wrap_content"
@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/options"
-        style="@style/Header"
+        style="@style/CurrentPage"
         android:layout_toRightOf="@+id/ships"
         android:text="OPTIONS"
         android:clickable="true"/>
@@ -46,38 +46,42 @@
         android:src="@drawable/header_line"
         android:layout_below="@+id/galnet"
         android:id="@+id/headerLine"/>
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:singleLine="true"
-        android:focusable="false"
-        android:ellipsize="marquee"
-        android:marqueeRepeatLimit="marquee_forever"
-        android:scrollHorizontally="true"
-        android:id="@+id/headlines"
-        android:padding="5dp"
-        android:layout_below="@id/headerLine"/>
+        android:layout_height="55dp"
+        android:layout_below="@id/headerLine"
+        android:paddingLeft="20dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:id="@+id/stylePreference">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pick App Style"
+            android:id="@+id/styleText"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="40dp"/>
+        <ImageView
+            android:layout_width="3dp"
+            android:layout_height="fill_parent"
+            android:layout_toRightOf="@id/styleText"
+            android:src="@drawable/vertical_line"
+            android:layout_marginRight="40dp"
+            android:id="@+id/styleDivider"/>
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/styleSpinner"
+            android:layout_marginTop="8dp"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/styleDivider"></Spinner>
+        </RelativeLayout>
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="5dp"
+        android:layout_height="wrap_content"
         android:src="@drawable/horizontal_line"
-        android:layout_below="@+id/headlines"
-        android:id="@+id/tickerLine"/>
+        android:layout_below="@+id/stylePreference"
+        android:id="@+id/styleLine"/>
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/tickerLine"
-        android:layout_alignParentStart="true"
-        android:paddingLeft="10dp"
-        android:id="@+id/refresher">
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/articles"
-            android:layout_below="@+id/tickerLine"
-            android:divider="#00000000"
-            android:dividerHeight="20dp"
-            android:scrollX="10dp"/>
-    </android.support.v4.widget.SwipeRefreshLayout>
 </RelativeLayout>

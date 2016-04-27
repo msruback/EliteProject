@@ -17,29 +17,34 @@
         android:id="@+id/galnet"
         android:text="GALNET"
         style="@style/CurrentPage"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="100dp"
         />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/trading"
         style="@style/Header"
-        android:layout_toRightOf="@id/galnet"
-        android:text="TRADING"/>
+        android:text="TRADING"
+        android:layout_alignLeft="@id/galnet"
+        android:layout_marginLeft="200dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ships"
         style="@style/Header"
-        android:layout_toRightOf="@id/trading"
-        android:text="SHIPS"/>
+        android:layout_alignRight="@+id/options"
+        android:text="SHIPS"
+        android:layout_marginRight="200dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/options"
         style="@style/Header"
-        android:layout_toRightOf="@+id/ships"
         android:text="OPTIONS"
-        android:clickable="true"/>
+        android:clickable="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="100dp"/>
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="6dp"

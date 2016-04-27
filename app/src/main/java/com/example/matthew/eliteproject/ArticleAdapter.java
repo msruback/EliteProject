@@ -59,6 +59,18 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
                 artHeadline.setTextColor(ContextCompat.getColor(getContext(),R.color.colorAlliance));
                 artLine.setColorFilter(ContextCompat.getColor(getContext(),R.color.colorAlliance));
                 break;
+            case "federation":
+                articleLayout.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.colorFederationBackground2));
+                artLogo.setBackgroundResource(R.drawable.federation_logo);
+                artHeadline.setTextColor(ContextCompat.getColor(getContext(),R.color.colorFederation));
+                artLine.setColorFilter(ContextCompat.getColor(getContext(),R.color.colorFederation));
+                break;
+            case "independent":
+                articleLayout.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.colorIndependentBackground2));
+                artLogo.setBackgroundResource(R.drawable.independent_logo);
+                artHeadline.setTextColor(ContextCompat.getColor(getContext(),R.color.colorIndependent));
+                artLine.setColorFilter(ContextCompat.getColor(getContext(),R.color.colorIndependent));
+                break;
 
         }
         return convertView;

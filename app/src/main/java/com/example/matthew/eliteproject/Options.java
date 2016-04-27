@@ -33,6 +33,29 @@ public class Options extends AppCompatActivity {
         styleOptions.add(new ImageText("Alliance",R.drawable.alliance_logo));
         styleOptions.add(new ImageText("Federation",R.drawable.federation_logo));
         styleOptions.add(new ImageText("Independent",R.drawable.independent_logo));
+        settings = PreferenceManager.getDefaultSharedPreferences(this);
+        if(!settings.contains("styles")){
+            SharedPreferences.Editor edit = settings.edit();
+            edit.putString("styles","galnet");
+            edit.commit();
+        }
+        switch(settings.getString("styles","fail")){
+            case "galnet":
+                setTheme(R.style.AppThemePrimary);
+                break;
+            case "empire":
+                setTheme(R.style.AppThemeEmpire);
+                break;
+            case "alliance":
+                setTheme(R.style.AppThemeAlliance);
+                break;
+            case "federation":
+                setTheme(R.style.AppThemeFederation);
+                break;
+            case "independent":
+                setTheme(R.style.AppThemeIndependent);
+                break;
+        }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
@@ -50,7 +73,6 @@ public class Options extends AppCompatActivity {
 
         StyleAdapter styleAdapter = new StyleAdapter(this,styleOptions);
         styleSpinner.setAdapter(styleAdapter);
-        settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         switch(settings.getString("styles","fail")){
             case "galnet":
                 styleSpinner.setSelection(0);
@@ -59,17 +81,19 @@ public class Options extends AppCompatActivity {
                 styleSpinner.setSelection(1);
                 break;
             case "alliance":
+
                 styleSpinner.setSelection(2);
+
                 break;
             case "federation":
                 styleSpinner.setSelection(3);
+
                 break;
             case "independent":
                 styleSpinner.setSelection(4);
+
                 break;
         }
-
-        getStylish();
 
         galnetButton.setOnClickListener(new TextView.OnClickListener(){
             @Override
@@ -85,23 +109,93 @@ public class Options extends AppCompatActivity {
                 SharedPreferences.Editor edit = settings.edit();
                 switch(position){
                     case 0:
+                        //header styling
+                        galnetButton.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.colorPrimary));
+                        optionsButton.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.colorPrimaryHighlight));
+                        tradingButton.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.colorPrimaryDark));
+                        shipsButton.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.colorPrimaryDark));
+                        optionsButton.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.colorPrimaryHighlight));
+                        headerLine.setColorFilter(ContextCompat.getColor(getApplicationContext(),R.color.colorPrimary));
+                        headerBackground.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.colorPrimaryBackground));
+
+                        //preference styling
+                        styleLayout.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.colorPrimaryBackground2));
+                        styleText.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.colorPrimary));
+                        styleDivider.setColorFilter(ContextCompat.getColor(getApplicationContext(),R.color.colorPrimary));
+                        styleLine.setColorFilter(ContextCompat.getColor(getApplicationContext(),R.color.colorPrimary));
+
                         edit.putString("styles","galnet");
                         break;
                     case 1:
+                        //header styling
+                        galnetButton.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.colorEmpire));
+                        tradingButton.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.colorEmpireDark));
+                        shipsButton.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.colorEmpireDark));
+                        optionsButton.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.colorEmpireHighlight));
+                        headerLine.setColorFilter(ContextCompat.getColor(getApplicationContext(),R.color.colorEmpire));
+                        headerBackground.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.colorEmpireBackground));
+
+                        //preference styling
+                        styleLayout.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.colorEmpireBackground2));
+                        styleText.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.colorEmpire));
+                        styleDivider.setColorFilter(ContextCompat.getColor(getApplicationContext(),R.color.colorEmpire));
+                        styleLine.setColorFilter(ContextCompat.getColor(getApplicationContext(),R.color.colorEmpire));
+
                         edit.putString("styles","empire");
                         break;
                     case 2:
+                        //header styling
+                        galnetButton.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.colorAlliance));
+                        tradingButton.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.colorAllianceDark));
+                        shipsButton.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.colorAllianceDark));
+                        optionsButton.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.colorAllianceHighlight));
+                        headerLine.setColorFilter(ContextCompat.getColor(getApplicationContext(),R.color.colorAlliance));
+                        headerBackground.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.colorAllianceBackground));
+
+                        //preference styling
+                        styleLayout.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.colorAllianceBackground2));
+                        styleText.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.colorAlliance));
+                        styleDivider.setColorFilter(ContextCompat.getColor(getApplicationContext(),R.color.colorAlliance));
+                        styleLine.setColorFilter(ContextCompat.getColor(getApplicationContext(),R.color.colorAlliance));
+
                         edit.putString("styles","alliance");
                         break;
                     case 3:
+                        //header styling
+                        galnetButton.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.colorFederation));
+                        tradingButton.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.colorFederationDark));
+                        shipsButton.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.colorFederationDark));
+                        optionsButton.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.colorFederationHighlight));
+                        headerLine.setColorFilter(ContextCompat.getColor(getApplicationContext(),R.color.colorFederation));
+                        headerBackground.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.colorFederationBackground));
+
+                        //preference styling
+                        styleLayout.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.colorFederationBackground2));
+                        styleText.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.colorFederation));
+                        styleDivider.setColorFilter(ContextCompat.getColor(getApplicationContext(),R.color.colorFederation));
+                        styleLine.setColorFilter(ContextCompat.getColor(getApplicationContext(),R.color.colorFederation));
+
                         edit.putString("styles","federation");
                         break;
                     case 4:
+                        //header styling
+                        galnetButton.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.colorIndependent));
+                        tradingButton.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.colorIndependentDark));
+                        shipsButton.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.colorIndependentDark));
+                        optionsButton.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.colorIndependentHighlight));
+                        headerLine.setColorFilter(ContextCompat.getColor(getApplicationContext(),R.color.colorIndependent));
+                        headerBackground.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.colorIndependentBackground));
+
+                        //preference styling
+                        styleLayout.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.colorIndependentBackground2));
+                        styleText.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.colorIndependent));
+                        styleDivider.setColorFilter(ContextCompat.getColor(getApplicationContext(),R.color.colorIndependent));
+                        styleLine.setColorFilter(ContextCompat.getColor(getApplicationContext(),R.color.colorIndependent));
+
                         edit.putString("styles","independent");
                         break;
                 }
                 edit.commit();
-                getStylish();
             }
 
             @Override
@@ -123,102 +217,4 @@ public class Options extends AppCompatActivity {
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
-
-    public void getStylish(){
-        settings = PreferenceManager.getDefaultSharedPreferences(this);
-        if(!settings.contains("styles")){
-            SharedPreferences.Editor edit = settings.edit();
-            edit.putString("styles","galnet");
-            edit.commit();
-        }
-        switch(settings.getString("styles","fail")){
-            case "galnet":
-                //header styling
-                galnetButton.setTextColor(ContextCompat.getColor(this,R.color.colorPrimary));
-                optionsButton.setBackgroundColor(ContextCompat.getColor(this,R.color.colorPrimaryHighlight));
-                tradingButton.setTextColor(ContextCompat.getColor(this,R.color.colorPrimaryDark));
-                shipsButton.setTextColor(ContextCompat.getColor(this,R.color.colorPrimaryDark));
-                optionsButton.setBackgroundColor(ContextCompat.getColor(this,R.color.colorPrimaryHighlight));
-                headerLine.setColorFilter(ContextCompat.getColor(this,R.color.colorPrimary));
-                headerBackground.setBackgroundColor(ContextCompat.getColor(this,R.color.colorPrimaryBackground));
-
-                //preference styling
-                styleLayout.setBackgroundColor(ContextCompat.getColor(this,R.color.colorPrimaryBackground2));
-                styleText.setTextColor(ContextCompat.getColor(this,R.color.colorPrimary));
-                styleDivider.setColorFilter(ContextCompat.getColor(this,R.color.colorPrimary));
-                styleLine.setColorFilter(ContextCompat.getColor(this,R.color.colorPrimary));
-                styleSpinner.setSelection(0);
-                
-                break;
-            case "empire":
-                //header styling
-                galnetButton.setTextColor(ContextCompat.getColor(this,R.color.colorEmpire));
-                tradingButton.setTextColor(ContextCompat.getColor(this,R.color.colorEmpireDark));
-                shipsButton.setTextColor(ContextCompat.getColor(this,R.color.colorEmpireDark));
-                optionsButton.setBackgroundColor(ContextCompat.getColor(this,R.color.colorEmpireHighlight));
-                headerLine.setColorFilter(ContextCompat.getColor(this,R.color.colorEmpire));
-                headerBackground.setBackgroundColor(ContextCompat.getColor(this,R.color.colorEmpireBackground));
-
-                //preference styling
-                styleLayout.setBackgroundColor(ContextCompat.getColor(this,R.color.colorEmpireBackground2));
-                styleText.setTextColor(ContextCompat.getColor(this,R.color.colorEmpire));
-                styleDivider.setColorFilter(ContextCompat.getColor(this,R.color.colorEmpire));
-                styleLine.setColorFilter(ContextCompat.getColor(this,R.color.colorEmpire));
-                styleSpinner.setSelection(1);
-
-                break;
-            case "alliance":
-                //header styling
-                galnetButton.setTextColor(ContextCompat.getColor(this,R.color.colorAlliance));
-                tradingButton.setTextColor(ContextCompat.getColor(this,R.color.colorAllianceDark));
-                shipsButton.setTextColor(ContextCompat.getColor(this,R.color.colorAllianceDark));
-                optionsButton.setBackgroundColor(ContextCompat.getColor(this,R.color.colorAllianceHighlight));
-                headerLine.setColorFilter(ContextCompat.getColor(this,R.color.colorAlliance));
-                headerBackground.setBackgroundColor(ContextCompat.getColor(this,R.color.colorAllianceBackground));
-
-                //preference styling
-                styleLayout.setBackgroundColor(ContextCompat.getColor(this,R.color.colorAllianceBackground2));
-                styleText.setTextColor(ContextCompat.getColor(this,R.color.colorAlliance));
-                styleDivider.setColorFilter(ContextCompat.getColor(this,R.color.colorAlliance));
-                styleLine.setColorFilter(ContextCompat.getColor(this,R.color.colorAlliance));
-                styleSpinner.setSelection(2);
-
-                break;
-            case "federation":
-                //header styling
-                galnetButton.setTextColor(ContextCompat.getColor(this,R.color.colorFederation));
-                tradingButton.setTextColor(ContextCompat.getColor(this,R.color.colorFederationDark));
-                shipsButton.setTextColor(ContextCompat.getColor(this,R.color.colorFederationDark));
-                optionsButton.setBackgroundColor(ContextCompat.getColor(this,R.color.colorFederationHighlight));
-                headerLine.setColorFilter(ContextCompat.getColor(this,R.color.colorFederation));
-                headerBackground.setBackgroundColor(ContextCompat.getColor(this,R.color.colorFederationBackground));
-
-                //preference styling
-                styleLayout.setBackgroundColor(ContextCompat.getColor(this,R.color.colorFederationBackground2));
-                styleText.setTextColor(ContextCompat.getColor(this,R.color.colorFederation));
-                styleDivider.setColorFilter(ContextCompat.getColor(this,R.color.colorFederation));
-                styleLine.setColorFilter(ContextCompat.getColor(this,R.color.colorFederation));
-                styleSpinner.setSelection(3);
-
-                break;
-            case "independent":
-                //header styling
-                galnetButton.setTextColor(ContextCompat.getColor(this,R.color.colorIndependent));
-                tradingButton.setTextColor(ContextCompat.getColor(this,R.color.colorIndependentDark));
-                shipsButton.setTextColor(ContextCompat.getColor(this,R.color.colorIndependentDark));
-                optionsButton.setBackgroundColor(ContextCompat.getColor(this,R.color.colorIndependentHighlight));
-                headerLine.setColorFilter(ContextCompat.getColor(this,R.color.colorIndependent));
-                headerBackground.setBackgroundColor(ContextCompat.getColor(this,R.color.colorIndependentBackground));
-
-                //preference styling
-                styleLayout.setBackgroundColor(ContextCompat.getColor(this,R.color.colorIndependentBackground2));
-                styleText.setTextColor(ContextCompat.getColor(this,R.color.colorIndependent));
-                styleDivider.setColorFilter(ContextCompat.getColor(this,R.color.colorIndependent));
-                styleLine.setColorFilter(ContextCompat.getColor(this,R.color.colorIndependent));
-                styleSpinner.setSelection(4);
-
-                break;
-        }
-    }
-
 }
