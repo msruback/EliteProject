@@ -3,7 +3,7 @@
 
 <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowBackground">@drawable/star_background</item>
+        <item name="android:background">@color/colorBlack</item>
         <item name="fontPath">fonts/century-gothic.ttf</item>
         <item name="android:windowAnimationStyle">@null</item>
     </style>
@@ -33,6 +33,9 @@
             <item name="android:scrollbarThumbVertical">@color/colorIndependent</item>
         </style>
     <style name="Header">
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
         <item name="android:textSize">35dp</item>
         <item name="fontPath">fonts/eurocaps.ttf</item>
     </style>
