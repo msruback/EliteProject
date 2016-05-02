@@ -55,6 +55,7 @@
         android:layout_height="55dp"
         android:layout_below="@id/headerLine"
         android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         android:paddingTop="3dp"
         android:paddingBottom="3dp"
         android:id="@+id/stylePreference">
@@ -77,9 +78,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/styleSpinner"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="6dp"
+            android:layout_toRightOf="@id/styleDivider"
+            android:layout_toLeftOf="@+id/apply"
+            android:popupBackground="#00ffffff"
+            android:dropDownVerticalOffset="39dp"
+            android:dropDownSelector="#888"></Spinner>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="APPLY"
+            android:padding="5dp"
+            android:textSize="20sp"
+            android:background="@drawable/background_rectangle"
+            android:layout_marginTop="7dp"
             android:layout_alignParentRight="true"
-            android:layout_toRightOf="@id/styleDivider"></Spinner>
+            android:id="@+id/apply"/>
         </RelativeLayout>
     <ImageView
         android:layout_width="match_parent"
